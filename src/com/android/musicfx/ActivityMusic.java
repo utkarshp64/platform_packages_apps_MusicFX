@@ -635,13 +635,13 @@ public class ActivityMusic extends Activity {
      * layouts so they can take over control/events.
      */
     private void updateUIHeadset(boolean force) {
-        boolean enabled = mToggleSwitch.isChecked() && mIsHeadsetOn;
         final Knob bBKnob = (Knob) findViewById(R.id.bBStrengthKnob);
         bBKnob.setBinary(mIsSpeakerOn);
         bBKnob.setEnabled(mToggleSwitch.isChecked()
                 && (mIsHeadsetOn || mIsSpeakerOn));
         final Knob vIKnob = (Knob) findViewById(R.id.vIStrengthKnob);
-        vIKnob.setEnabled(enabled || !mVirtualizerIsHeadphoneOnly);
+        vIKnob.setEnabled(mToggleSwitch.isChecked()
+                && (mIsHeadsetOn || mIsSpeakerOn));
 
         Log.v(TAG, "updateUIHeadset: mIsHeadsetOn: " + mIsHeadsetOn);
         Log.v(TAG, "updateUIHeadset: mIsSpeakerOn: " + mIsSpeakerOn);
@@ -654,7 +654,8 @@ public class ActivityMusic extends Activity {
             on = ControlPanelEffect.getParameterBoolean(mContext,
                     mCallingPackageName, mAudioSession,
                     ControlPanelEffect.Key.virt_enabled);
-            vIKnob.setOn((enabled && on) || !mVirtualizerIsHeadphoneOnly);
+            vIKnob.setOn(mToggleSwitch.isChecked()
+                    && (mIsHeadsetOn || mIsSpeakerOn) && on);
         }
     }
 
