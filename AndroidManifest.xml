@@ -19,11 +19,13 @@
     android:installLocation="auto"
     android:versionName="1.4" android:versionCode="10400">
    <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="23" />
-    
-    <uses-permission
-        android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
+   
+        android:minSdkVersion="24"
+        android:targetSdkVersion="25" />
+
+    <!--<uses-permission
+   android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />-->
+
     <uses-permission
         android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission
@@ -31,17 +33,16 @@
     <uses-permission
         android:name="android.permission.INTERNET" />
     <uses-permission
-        android:name="android.permission.BLUETOOTH"></uses-permission>
+        android:name="android.permission.BLUETOOTH" />
     <application
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar">
-        <activity
-            android:name=".ActivityMusic"
-            android:theme="@style/EqTheme"
-            android:label="@string/eq_dialog_title"
-            android:screenOrientation="portrait">
+        android:supportsRtl="true"  
+        android:theme="@style/EqTheme"
+        android:label="@string/eq_dialog_title"
+        android:screenOrientation="portrait"
+        android:theme="@style/EqTheme" >
+        <activity android:name=".ActivityMusic" >
+
             <intent-filter>
                 <action
                     android:name="android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL" />
